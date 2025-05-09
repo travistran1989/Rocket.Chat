@@ -514,7 +514,7 @@ jobs:
       enterprise-license: ${{ needs.release-versions.outputs.enterprise-license }}
       shard: '[1, 2, 3, 4, 5]'
       total-shard: 5
-      mongodb-version: "['5.0']"
+      mongodb-version: "['5.0', '7.0']"
       node-version: ${{ needs.release-versions.outputs.node-version }}
       deno-version: ${{ needs.release-versions.outputs.deno-version }}
       lowercase-repo: ${{ needs.release-versions.outputs.lowercase-repo }}
@@ -560,10 +560,6 @@ jobs:
           fi
 
           if [[ '${{ needs.test-ui-ee.result }}' != 'success' ]]; then
-            exit 1
-          fi
-
-          if [[ '${{ needs.test-ui-ee-no-watcher.result }}' != 'success' ]]; then
             exit 1
           fi
 
